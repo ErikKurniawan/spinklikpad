@@ -336,6 +336,7 @@ font-size:13px;
                         $_name_supplier = $v['_name_supplier'];
                         $_link = $v['_link'];
                         $_wishlist = $v['_wishlist'];
+                        $_picture = $v['_picture'];
                         $_province = $v['_province'];
                         $_rating = $v['_rating'] == "" || $v['_rating'] == "0" ? '' : $v['_rating'];
                         $ratestar = $v['_rating'] == "" || $v['_rating'] == "0" ? '' : 'class="rateyo" data-rateyo-rating="' . $v['_rating'] . '"';
@@ -376,7 +377,8 @@ font-size:13px;
                                         <a href="<?= URL ?>product/detail/<?= $_code ?>">
 
                                             <div class="product-image">
-                                                <img class="img-fluid" src="<?= $_link . "?a=" . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';"  title="kategory 1"/>
+                                                <img class="img-fluid" src="<?= PATH_IMAGE?>product/<?=$_picture?>?a=<?=time()?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?=time()?>';"  title="kategory 1"/>
+                                                
                                             </div>
                                             <div class="product-title"><?= $v['_name'] ?></div>
                                             <div class="product-sale-price"><?php
@@ -675,7 +677,8 @@ font-size:13px;
                                         <a href="<?= URL ?>product/detail/<?= $_code ?>">
 
                                             <div class="product-image">
-                                                <img class="img-fluid" src="<?= $_link . "?a=" . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';"  title="kategory 1"/>
+                                                <img class="img-fluid" src="<?= PATH_IMAGE?>product/<?=$_picture?>?a=<?=time()?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?=time()?>';"  title="kategory 1"/>
+                                                <!--<img class="img-fluid" src="<?= $_link . "?a=" . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';"  title="kategory 1"/>-->
                                             </div>
                                             <div class="product-title"><?= $v['_name'] ?></div>
                                             <div class="product-sale-price"><?php

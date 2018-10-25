@@ -282,7 +282,16 @@ $purchasestatus = $this->purchasestatus;
                                 <td style="padding:15px;">
                                     <div style="font-size:12px;color:#6a6c6c;">Pembelian Dari Toko</div>
                                     <div style="font-size:14px;color:#733f98;font-weight: bold;"><?= $_name_supplier ?></div>
+                                    
                                     <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;"  src="<?= URL ?>public/image/klikpad.jpg"/>
+                                    
+                                    
+                                    
+                                    
+                                    <img class="img-fluid" style="margin-left: auto;margin-right: auto;display: block;" 
+                                         src="<?=PATH_IMAGE?>image/product/be070699fcc17c609d67139183a299aa.jpg?a=1540441060"
+                                         onerror="this.src='http://localhost/klikpad/public/image/logo.png?a=1540441060';">
+                                    
                                 </td>
                                 <td style="width: 85%;padding:15px;">
                                     <div style="font-size:13px;color:#733f98;font-weight: bold;"><?= $_invoice ?></div>
