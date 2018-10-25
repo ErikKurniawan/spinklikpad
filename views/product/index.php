@@ -506,7 +506,8 @@ $listproduct = $this->listproduct;
                             <a href="<?= URL ?>product/detail/<?= $_code ?>">
 
                                 <div class="product-image">
-                                    <img class="img-fluid" src="<?= $_link . "?a=" . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';"  title="kategory 1"/>
+                                    <img class="img-fluid" src="<?= PATH_IMAGE?>product/<?=$_picture?>?a=<?=time()?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?=time()?>';"  title="kategory 1"/>
+                                    
                                 </div>
                                 <div class="product-title"><?= $v['_name'] ?></div>
                                 <div class="product-sale-price"><?php

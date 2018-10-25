@@ -1,3 +1,6 @@
+<?php
+
+?>
 <style>
     .panel-filter
     {
@@ -251,43 +254,51 @@ foreach ($product as $k => $v) {
             <div class="row section">
                 <div class="col-1">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a data-toggle="pill"  href="#p0"><img style="border:3px solid #d2d2d2;" class="img-fluid"  src="<?= $_link . '?a=' . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';" /></a>    
-                        <?php
-                        $tmpseq = 0;
-                        if (count($_photos > 0)) {
+                        <a data-toggle="pill"  href="#p0">
+                            <img style="border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
+                            <?php
+                            $tmpseq = 0;
+                            if (count($_photos > 0)) {
 
-                            $linkphoto = URL . 'public/img/detail_default.jpg';
-                            $active = $tmpseq == 0 ? 'active' : '';
-                            foreach ($_photos as $k => $v) {
-                                $tmpseq++;
-                                $_link_galery = $v['_link_galery'];
-                                if ($tmpseq == 1) {
+                                $linkphoto = URL . 'public/img/detail_default.jpg';
+                                $active = $tmpseq == 0 ? 'active' : '';
+                                foreach ($_photos as $k => $v) {
+                                    $tmpseq++;
+                                    $_detail_picture = $v['_picture'];
+                                    $_link_galery = $v['_link_galery'];
+                                    if ($tmpseq == 1) {
+                                        ?>
+
+
+                                        <?php
+                                    }
                                     ?>
-                                    
-
+                                    <a data-toggle="pill"  href="#p<?= $tmpseq ?>">
+                                        <img style="border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
+                                        
+                                    </a>
                                     <?php
                                 }
-                                ?>
-                                <a data-toggle="pill"  href="#p<?= $tmpseq ?>"><img style="border:3px solid #d2d2d2;" class="img-fluid"  src="<?= $_link_galery . '?a=' . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';" /></a>
-                                <?php
                             }
-                        }
-                        ?>
-                        <!--
-                                                <a data-toggle="pill" href="#p2"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p2.jpg" title="image 2"/></a>
-                                                <a data-toggle="pill" href="#p3"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p3.jpg" title="image 3"/></a>
-                                                <a data-toggle="pill" href="#p4"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p4.jpg" title="image 4"/></a>
-                                                <a data-toggle="pill" href="#p5"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p5.jpg" title="image 5"/></a>
-                        -->
+                            ?>
+                            <!--
+                                                    <a data-toggle="pill" href="#p2"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p2.jpg" title="image 2"/></a>
+                                                    <a data-toggle="pill" href="#p3"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p3.jpg" title="image 3"/></a>
+                                                    <a data-toggle="pill" href="#p4"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p4.jpg" title="image 4"/></a>
+                                                    <a data-toggle="pill" href="#p5"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p5.jpg" title="image 5"/></a>
+                            -->
 
                     </div>
                 </div>
-                <div class="col-5" style="border:1px solid #e2e7e9;height: 300px;">
+                <div class="col-5" style="border:0px solid #e2e7e9;height: 300px;">
                     <div class="tab-content tab-image" id="v-pills-tabContent" >
 
-      <div class="tab-pane fade show active" id="p0" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                        <img style="border:3px solid #d2d2d2;width: 100%;" class="img-fluid"  src="<?= $_link . '?a=' . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';" />
-                                    </div>
+                        <div class="tab-pane fade show active" id="p0" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+                            <img style="width: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  title="kategory 1"/>
+
+
+                        </div>
 
                         <?php
                         $tmpseq = 0;
@@ -298,18 +309,20 @@ foreach ($product as $k => $v) {
                             foreach ($_photos as $k => $v) {
                                 $tmpseq++;
                                 $active = $tmpseq == 1 ? '' : '';
+                                $_detail_picture = $v['_picture'];
                                 $_link_galery = $v['_link_galery'];
                                 if ($tmpseq == 1) {
                                     ?>
 
-                              
+
 
                                     <?php
                                 }
                                 ?>
 
                                 <div class="tab-pane fade " id="p<?= $tmpseq ?>" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <img style="border:3px solid #d2d2d2;width: 100%;" class="img-fluid"  src="<?= $_link_galery . '?a=' . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';" />
+                                    <img style="width: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
+                                    
                                 </div>
                                 <?php
                             }
@@ -415,7 +428,7 @@ foreach ($product as $k => $v) {
                         </div>
 
                         <div style="text-align: right;">
-                            <a href="#" data="<?= $_code ?>" class="btn btn-cart btn-showmodal" >Tambahkan Kekeranjang</a>
+                            <a href="#" data="<?= $_code ?>" class="btn btn-cart btn-showmodal" >Tambahkan Ke keranjang</a>
                         </div>
 
                     </div>
@@ -470,13 +483,13 @@ foreach ($product as $k => $v) {
 
                                 <div style="font-size:12px;color:#95999A;text-align: center;"><?= count($product_ulasan) ?> ulasan</div>
                             </div>
-                            <div style="float:left;width: 696px;text-align: left;border:0px solid red;  display: block;margin-left: 20px;">
+                            <div style="float:left;width: 600px;text-align: left;border:0px solid red;  display: block;margin-left: 20px;">
 
                                 <style>
 
                                     .table-cust { 
                                         display: table;width: 100%; border:0px solid black; 
-                                        
+
                                     }
                                     .cell-cust  {
                                         display: table-cell; 
@@ -485,7 +498,7 @@ foreach ($product as $k => $v) {
                                         text-align: center;
 
                                     }
-                           
+
 
                                 </style>
                                 <?php
@@ -546,6 +559,7 @@ foreach ($product as $k => $v) {
         $_subprovince = "";
         $_district = "";
         $_subdistrict = "";
+        
         foreach ($supplier as $k => $v) {
             $_email = $v['_email'];
             $_name = $v['_name'];
@@ -565,6 +579,8 @@ foreach ($product as $k => $v) {
 
 
         $supplierulasan = $this->supplierulasan;
+        
+        
         $avgsupplierulasan = 0;
         foreach ($supplierulasan as $k => $v) {
 
@@ -581,7 +597,8 @@ foreach ($product as $k => $v) {
                 </div>
                 <div class="panel-supplier">
                     <div class="supplier-image">
-                        <img class="img-fluid"  src="<?= PATH_IMAGE ?>asset/icon_cart_32.png" title="kategory 1"/>
+                        
+                        <img class="img-fluid" src="<?= PATH_IMAGE ?>merchant/<?=$_image?>?a=<?=time()?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"/>
                     </div>
                     <div class="supplier-title"><?= $_name ?></div>
                     <div class="supplier-address"><?= $_province ?></div>

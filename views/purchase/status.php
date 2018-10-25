@@ -264,6 +264,7 @@ $purchasestatus = $this->purchasestatus;
                             $_product = $v3['_product'];
                             $_price = $v3['_price'];
                             $_qty = $v3['_qty'];
+                            $_picture = $v3['_picture'];
                             $_weight = $v3['_weight'] / 1000;
                             $_desc = $v3['_desc'];
                             $_name_product = $v3['_name_product'];
@@ -283,14 +284,8 @@ $purchasestatus = $this->purchasestatus;
                                     <div style="font-size:12px;color:#6a6c6c;">Pembelian Dari Toko</div>
                                     <div style="font-size:14px;color:#733f98;font-weight: bold;"><?= $_name_supplier ?></div>
                                     
-                                    <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;"  src="<?= URL ?>public/image/klikpad.jpg"/>
-                                    
-                                    
-                                    
-                                    
-                                    <img class="img-fluid" style="margin-left: auto;margin-right: auto;display: block;" 
-                                         src="<?=PATH_IMAGE?>image/product/be070699fcc17c609d67139183a299aa.jpg?a=1540441060"
-                                         onerror="this.src='http://localhost/klikpad/public/image/logo.png?a=1540441060';">
+                                    <img style="width: 64px;height: 64px;border:3px solid #d2d2d2;background:white;" class="img-fluid" src="<?= PATH_IMAGE ?>merchant/<?= $_image ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"/>
+       
                                     
                                 </td>
                                 <td style="width: 85%;padding:15px;">
@@ -376,14 +371,16 @@ $purchasestatus = $this->purchasestatus;
                                                 $_qty = $v3['_qty'];
                                                 $_weight = $v3['_weight'] / 1000;
                                                 $_desc = $v3['_desc'];
+                                                $_picture = $v3['_picture'];
                                                 $_name_product = $v3['_name_product'];
                                                 $_link = $v3['_link'];
                                                 $_link_thumb = $v3['_link_thumb'];
                                                 ?>
                                                 <tr>
-                                                    <td style="width: 50%;">
-                                                        <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;"  src="<?= URL ?>public/image/klikpad.jpg"/>
-                                                        <div  style="font-size: 12px; font-weight: bold;display: inline-block;vertical-align:top;padding:5px; ">
+                                                    <td style="width: 50%;border:0px solid black;">
+                                                        
+                                                        <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
+                                                        <div  style="font-size: 12px; font-weight: bold;display: inline-block;vertical-align:top;padding:5px; border:px solid red;width:330px;">
                                                             <div style="border:0px solid black;height: 40px;">
                                                                 <?= $_name_product ?>
                                                             </div>

@@ -157,7 +157,7 @@ $catforproduct = $this->catforproduct;
 
 
 
-                    $.post( addlink, {'product': product}, function (a) {
+                    $.post(addlink, {'product': product}, function (a) {
 
 
 
@@ -220,6 +220,7 @@ $catforproduct = $this->catforproduct;
             $_code = $v['_code'];
             $_price = $v['_price'];
             $_weight = $v['_weight'];
+            $_picture = $v['_picture'];
             $_name_supplier = $v['_name_supplier'];
             $_link = $v['_link'];
             $_wishlist = $v['_wishlist'];
@@ -248,17 +249,19 @@ $catforproduct = $this->catforproduct;
                 <div class="product-card2">
                     <a href="<?= URL ?>product/detail/<?= $_code ?>">
 
-                        <div class="product-image" style=" height: 200px;">
+                        <div class="product-image" style=" height: 200px;line-height: 200px;">
 
-                            <img class="img-fluid" src="<?= $_link . "?a=" . time() ?>" onerror="this.src='<?= URL ?>public/image/default.jpg';"  title="kategory 1"/>
+                            <center>
+                                <img class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  />
+                            </center>
 
                         </div>
                         <div class="product-title"><?= $v['_name'] ?></div>
                         <div class="product-sale-price"><?php
-        if ($_discount > 0) {
-            echo "Rp " . glfn::_currency($_price);
-        }
-            ?></div>
+                            if ($_discount > 0) {
+                                echo "Rp " . glfn::_currency($_price);
+                            }
+                            ?></div>
                         <div class="product-price">Rp <?= glfn::_currency($_discount_price) ?></div>
                     </a>
                     <div class="product-icon">
@@ -275,7 +278,7 @@ $catforproduct = $this->catforproduct;
                         }
 
 
-                        $active = $_wishlist !=NULL ? "active" : '';
+                        $active = $_wishlist != NULL ? "active" : '';
                         ?>
 
                         <a href="iasd" class="wishlist float-right" data="<?= $_code ?>"><i class="fas <?= $active ?> fa-heart"></i></a>

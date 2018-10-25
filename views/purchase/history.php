@@ -284,9 +284,9 @@ $purchase_history = $this->purchasehistory;
                         <td style="padding:15px;">
                             <div style="font-size:12px;color:#6a6c6c;">Pembelian Dari Toko</div>
                             <div style="font-size:14px;color:#733f98;font-weight: bold;"><?= $_name_supplier ?></div>
-                            <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;"  src="<?= URL ?>public/image/klikpad.jpg"/>
+                            <img style="width: 64px;height: 64px;border:3px solid #d2d2d2;background:white;" class="img-fluid" src="<?= PATH_IMAGE ?>merchant/<?= $_image ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"/>
                         </td>
-                        <td style="width: 85%;padding:15px;">
+                        <td style="width: 82%;padding:15px;">
                             <div style="font-size:13px;color:#733f98;font-weight: bold;">INV/20180815/XVIII/VIII/191729440</div>
                             <div style="font-size:12px;color:#95999A;margin: 5px 0px;">
                                 Tanggal Transaksi <span style="font-weight: bold;color:#6a6c6c;"><?= $transaction_time ?></span> | 
@@ -380,6 +380,7 @@ $purchase_history = $this->purchasehistory;
                                     foreach ($_details as $k3 => $v3) {
                                         $_product = $v3['_product'];
                                         $_price = $v3['_price'];
+                                        $_picture = $v3['_picture'];
                                         $_qty = $v3['_qty'];
                                         $_weight = $v3['_weight'] / 1000;
                                         $_desc = $v3['_desc'];
@@ -389,17 +390,18 @@ $purchase_history = $this->purchasehistory;
                                         ?>
 
                                         <tr>
-                                            <td style="width: 50%;">
-                                                <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;"  src="<?= URL ?>public/image/klikpad.jpg"/>
-                                                <div  style="font-size: 12px; font-weight: bold;display: inline-block;vertical-align:top;padding:5px; ">
-                                                    <div style="border:0px solid black;height: 40px;">
-                                                       <?=$_name_product?>
-                                                    </div>
-                                                    <div  style="font-size: 11px;color:#95999A">
-                                                        <?=$_qty?> Barang (<?=$_weight?> kg) x Rp <?= number_format($_price)?>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                             <td style="width: 50%;border:0px solid black;">
+                                                        
+                                                        <img style="height: 64px;width: 64px;border:3px solid #d2d2d2;" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
+                                                        <div  style="font-size: 12px; font-weight: bold;display: inline-block;vertical-align:top;padding:5px; border:px solid red;width:330px;">
+                                                            <div style="border:0px solid black;height: 40px;">
+                                                                <?= $_name_product ?>
+                                                            </div>
+                                                            <div  style="font-size: 11px;color:#95999A">
+                                                                <?= $_qty ?> Barang (<?= $_weight ?> kg) x Rp <?= number_format($_price) ?>
+                                                            </div>
+                                                        </div>
+                                                    </td>
                                             <td>
                                                 <div  style="font-size: 14px; font-weight: bold">
                                                     Catatan untuk Penjual

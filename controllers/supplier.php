@@ -18,16 +18,19 @@ class supplier extends controller {
         $supplier = glfn::_curl_api2('supplier/detail', array('_code' => $_code));
         $supplier = $this->view->supplier = isset($supplier['data']) && count($supplier['data']) > 0 ? $supplier['data'] : array();
 
-        
-        
-        $prm = array('_supplier' => $_code,'_customer'=>$_COOKIE[COOKIE_USER]);
-        
-        $prodpopuler = $this->view->prodpopuler = glfn::_curl_api2('product/productpopuler', $prm );
+
+
+        $prm = array('_supplier' => $_code, '_customer' => $_COOKIE[COOKIE_USER]);
+
+        $prodpopuler = $this->view->prodpopuler = glfn::_curl_api2('product/productpopuler', $prm);
         $prodpopuler = $this->view->prodpopuler = isset($prodpopuler['data']) && count($prodpopuler['data']) > 0 ? $prodpopuler['data'] : array();
 
-        
 
-        
+
+        $supplierulasan = glfn::_curl_api2('product/ulasan', array('_supplier' => $_code));
+        $supplierulasan = $this->view->supplierulasan = isset($supplierulasan['data']) && count($supplierulasan['data']) > 0 ? $supplierulasan['data'] : array();
+
+
 
 
         $catforproduct = glfn::_curl_api2('category/catforproduct', array('_supplier' => $_code));
@@ -115,12 +118,12 @@ class supplier extends controller {
         $post['_supplier'] = isset($_POST['supplier']) ? $_POST['supplier'] : '';
         $post['_limitstart'] = $limitstart;
         $post['_limitend'] = $limitend;
-        
-        
-        $post['_customer']=$_COOKIE[COOKIE_USER];
 
 
-        
+        $post['_customer'] = $_COOKIE[COOKIE_USER];
+
+
+
         $prod = glfn::_curl_api2('product/listdatafilter', $post);
         $listproduct = $this->view->listproduct = isset($prod['data']) && count($prod['data']) > 0 ? $prod['data'] : array();
 
