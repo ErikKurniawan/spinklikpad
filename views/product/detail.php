@@ -290,12 +290,12 @@ foreach ($product as $k => $v) {
 
                     </div>
                 </div>
-                <div class="col-5" style="border:0px solid #e2e7e9;height: 300px;">
-                    <div class="tab-content tab-image" id="v-pills-tabContent" >
+                <div class="col-5" >
+                    <div class="tab-content tab-image" id="v-pills-tabContent" style="border:0px solid #e2e7e9;width: 350px;height: 350px;">
 
                         <div class="tab-pane fade show active" id="p0" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
-                            <img style="width: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  title="kategory 1"/>
+                            <img style="width: 100%;height: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  title="kategory 1"/>
 
 
                         </div>
@@ -321,7 +321,7 @@ foreach ($product as $k => $v) {
                                 ?>
 
                                 <div class="tab-pane fade " id="p<?= $tmpseq ?>" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                    <img style="width: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
+                                    <img style="width: 100%;height: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
                                     
                                 </div>
                                 <?php
