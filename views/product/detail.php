@@ -291,7 +291,7 @@ foreach ($product as $k => $v) {
                     </div>
                 </div>
                 <div class="col-5" >
-                    <div class="tab-content tab-image" id="v-pills-tabContent" style="border:0px solid #e2e7e9;width: 350px;height: 350px;">
+                    <div class="tab-content tab-image" id="v-pills-tabContent" style="border:0px solid #e2e7e9;width: 300px;height: 300px;">
 
                         <div class="tab-pane fade show active" id="p0" role="tabpanel" aria-labelledby="v-pills-home-tab">
 
