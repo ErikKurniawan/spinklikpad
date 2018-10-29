@@ -3,7 +3,7 @@
 class user extends controller {
 
     function __construct() {
-        $this->db = new database(DB_TYPE,DB_HOST,DB_NAME,DB_PORT,DB_USER,DB_PASS);
+        $this->db = new database(DB_TYPE, DB_HOST, DB_NAME, DB_PORT, DB_USER, DB_PASS);
         parent::__construct();
     }
 
@@ -17,10 +17,9 @@ class user extends controller {
         $post['_user'] = $_POST['user'];
         $post['_password'] = $_POST['password'];
         $toko = 1;
-        
-        $this->db->_select('select * from ms_supplier where _email = :email',array('email' => $_POST['user']));
-        if($this->db->_rr == 0)
-        {
+
+        $this->db->_select('select * from ms_supplier where _email = :email', array('email' => $_POST['user']));
+        if ($this->db->_rr == 0) {
             $toko = 0;
         }
 
@@ -111,10 +110,10 @@ class user extends controller {
         $fileInput = isset($_FILES['fileInput']) ? $_FILES['fileInput'] : '';
 
         if ($fileInput != "") {
-            
+
             $target_file = 'public/image/customer';
             if (file_exists($target_file)) {
-                
+
                 $newupload = $target_file . '/' . $picture_customer . '.jpg';
 
 
@@ -148,8 +147,8 @@ class user extends controller {
         $style2 = 'style="margin-top:15px;font-size:16px;color:#733f98"';
         $style3 = 'style="margin-top:15px;font-size:16px;color:#d91b5b"';
         ?>
-        
-        <div <?=$style?>>Ganti Sandi</div><div <?=$style3?>>Sandi berhasil di ganti</div>
+
+        <div <?= $style ?>>Ganti Sandi</div><div <?= $style3 ?>>Sandi berhasil di ganti</div>
         <?php
     }
 
@@ -593,6 +592,24 @@ class user extends controller {
 
         $update = glfn::_curl_api2('address/update', $post);
         echo json_encode($update);
+    }
+
+    function review() {
+        $query = "select _invoice,d._name as _product_name, e._name as _supplier_name,_product,_rating,_rating_desc,_rating_date from tr_transaction_delivery_detail a
+                join tr_transaction_delivery b on b._code_detail_transaction = a._code_detail_transaction
+                join tr_transaction c on b._transaction = c._code
+                join ms_product d on a._product= d._code
+                join ms_supplier e on e._code = b._supplier
+                where _customer=:_customer
+                and _rating<>0
+            ";
+
+        $this->view->data = $this->db->_select($query, array('_customer' => $_COOKIE[COOKIE_USER]));
+
+
+        $this->view->css = glfn::_css();
+        $this->view->js = glfn::_js();
+        $this->view->render('user/review');
     }
 
 }
