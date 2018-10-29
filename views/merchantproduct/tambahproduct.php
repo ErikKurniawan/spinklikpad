@@ -325,7 +325,7 @@
                         <div class="col-2 span-field" style="">
                             <div class="form-group" style="border:1px solid #d2d2d2;padding:10px;background: #f7f7f7;display: table;width: 100%;">
                                 <div>
-                                    <img class="img-fluid" id="blah" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>merchant/<?= $supplier[0]['_image'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>klikpadlogogram.jpg?a=<?= time() ?>';"  />
+                                    <img class="img-fluid" id="blah" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>merchant/<?= $supplier[0]['_image'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  />
                                 </div>
                                 <div>
                                     <label for="fileInput" class="custom-file-upload">
@@ -342,7 +342,7 @@
                         <div class="col-2 span-field" style="">
                             <div class="form-group" style="border:1px solid #d2d2d2;padding:10px;background: #f7f7f7;display: table;width: 100%;">
                                 <div>
-                                    <img class="img-fluid" id="blah<?php echo $x?>" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>merchant/<?= $supplier[0]['_image'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>klikpadlogogram.jpg?a=<?= time() ?>';"  />
+                                    <img class="img-fluid" id="blah<?php echo $x?>" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>merchant/<?= $supplier[0]['_image'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  />
                                 </div>
                                 <div>
                                     <label for="fileInput<?php echo $x?>" class="custom-file-upload">

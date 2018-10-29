@@ -20,12 +20,7 @@ class merchantproduct extends controller {
         //glfn::_pre($count_supplier);
         $this->view->province = $data_province;
         $this->view->kategori = $data_kategori;
-        if($data_supplier[0]['_level'] == 0)
-        {
-            $this->view->render('merchantproduct/tambahproduct');
-        }else{
-            $this->view->render('merchantproduct/index');
-        }
+        $this->view->render('merchantproduct/index');
     }
 
     function daftarproduct() {
@@ -127,7 +122,6 @@ class merchantproduct extends controller {
                 '_price_bos' => $harga_bos,
                 '_weight' => $berat,
                 '_ppn' => $ppn,
-                '_level' => $data_supplier[0]['_level'],
                 '_supplier' => $data_supplier[0]['_code'],
                 '_discount' => $diskon,
                 '_category_detail' => $kategori,

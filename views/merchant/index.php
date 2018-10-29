@@ -222,10 +222,7 @@
                                             message: 'Nama Toko harus diisi'}}},
                                 no_hp: {validators: {
                                         notEmpty: {
-                                            message: 'No Handphone harus diisi'}}},
-                                level_toko: {validators: {
-                                        notEmpty: {
-                                            message: 'Level Toko harus diisi'}}}
+                                            message: 'No Handphone harus diisi'}}}
                             }
                         }).on('error.form.bv', function (e) {
                             e.preventDefault();
@@ -301,37 +298,6 @@
 
                         <div class="col-9 form-group">
                             <input type="text" class="form-control cst-input" id="no_hp" placeholder="No Handphone"  name="no_hp" value="<?= $supplier[0]['_nohp'] ?>">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-3 span-field">
-                            Level Toko
-                        </div>
-
-                        <div class="col-9 form-group">
-                            <select name="level_toko" id="level_toko" class="form-control">
-                                <option value="">-- Pilih Level Toko --</option>
-<?
-                                if($supplier[0]['_level'] == 0)
-                                {
-?>
-                                    <option value="0" selected="selected">Distributor</option>
-                                    <option value="1">Merchant</option>
-<?
-                                }else if($supplier[0]['_level'] == 1){
-?>
-                                    <option value="0">Distributor</option>
-                                    <option value="1" selected="selected">Merchant</option>
-<?
-                                }else{
-?>
-                                    <option value="0">Distributor</option>
-                                    <option value="1">Merchant</option>
-<?
-                                }
-?>
-                            </select>
                         </div>
                     </div>
 

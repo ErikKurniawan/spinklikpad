@@ -107,50 +107,6 @@
 </style>
 
 <script>
-    function readURL(input, theid) {
-
-        if (input.files && input.files[0]) {
-            var _validFileExtensions = ["jpg", "jpeg", "bmp", "gif", "png"];
-            split = input.value.split('.');
-
-
-
-            var blnValid = false;
-            var sFileName = input.value;
-            if (sFileName.length > 0) {
-                for (var j = 0; j < _validFileExtensions.length; j++) {
-                    var sCurExtension = _validFileExtensions[j];
-                    if (split[split.length - 1] == sCurExtension) {
-                        blnValid = true;
-                        break;
-                    }
-                }
-            }
-
-            if (!blnValid) {
-                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
-                return false;
-            } else
-            {
-
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    if(theid == 0)
-                    {
-                        $('#blah').attr('src', e.target.result);
-                    }else{
-                        $('#blah'+theid).attr('src', e.target.result);
-                    }
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-
-
-
-        }
-    }
 // Shorthand for $( document ).ready()
     $(function () {
         $("#fileInput").change(function () {
