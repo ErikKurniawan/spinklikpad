@@ -559,7 +559,7 @@ foreach ($product as $k => $v) {
         $_subprovince = "";
         $_district = "";
         $_subdistrict = "";
-        
+        $_image="";
         foreach ($supplier as $k => $v) {
             $_email = $v['_email'];
             $_name = $v['_name'];
@@ -567,6 +567,7 @@ foreach ($product as $k => $v) {
             $_nohp = $v['_nohp'];
             $_createdate = $v['_createdate'];
             $_province = $v['_province'];
+            $_image = $v['_image'];
             $_subprovince = $v['_subprovince'];
             $_district = $v['_district'];
             $_subdistrict = $v['_subdistrict'];
@@ -635,6 +636,7 @@ foreach ($product as $k => $v) {
     }
     .supplier-title
     {
+        flex-wrap: wrap;
         color:#733f98;
         font-size:18px;
         font-weight: bold;
