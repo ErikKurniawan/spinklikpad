@@ -203,7 +203,7 @@
 
 
             <?php
-            require '/../user/left-menu.php';
+            require __DIR__.'/../user/left-menu.php';
             ?>
         </div>
 

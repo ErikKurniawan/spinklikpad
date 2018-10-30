@@ -202,6 +202,7 @@
 
 
             <?php
+            //echo __DIR__;
             require __DIR__.'/../user/left-menu.php';
             ?>
         </div>
