@@ -107,50 +107,6 @@
 </style>
 
 <script>
-    function readURL(input, theid) {
-
-        if (input.files && input.files[0]) {
-            var _validFileExtensions = ["jpg", "jpeg", "bmp", "gif", "png"];
-            split = input.value.split('.');
-
-
-
-            var blnValid = false;
-            var sFileName = input.value;
-            if (sFileName.length > 0) {
-                for (var j = 0; j < _validFileExtensions.length; j++) {
-                    var sCurExtension = _validFileExtensions[j];
-                    if (split[split.length - 1] == sCurExtension) {
-                        blnValid = true;
-                        break;
-                    }
-                }
-            }
-
-            if (!blnValid) {
-                alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
-                return false;
-            } else
-            {
-
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    if(theid == 0)
-                    {
-                        $('#blah').attr('src', e.target.result);
-                    }else{
-                        $('#blah'+theid).attr('src', e.target.result);
-                    }
-                }
-
-                reader.readAsDataURL(input.files[0]);
-            }
-
-
-
-        }
-    }
 // Shorthand for $( document ).ready()
     $(function () {
         $("#fileInput").change(function () {
@@ -178,6 +134,13 @@
         });
     });
 
+    function sendPU(theid)
+    {
+        document.getElementById('theid').value = theid;
+        document.getElementById('frmdaftarproduct').action = '<?= URL ?>merchantproduct/publishunpublish';
+        document.getElementById('frmdaftarproduct').submit();
+    }
+
 </script>
 
 
@@ -194,70 +157,73 @@
     </div>
 </div>
 
-<div class="container-fluid section content">
-    <div class="row">
-        <div class="col-2" >
-            <?php
-            require __DIR__.'/../user/left-menu.php';
-            ?>
-        </div>
-        <div class="col-10">
-            <div class="row" style="border:1px solid #e2e7e9;padding:10px 15px;background-color: #ededed;">
-                <div class="col-6">
-                    <div class="profile-fav-title">Produk</div>
-                </div>
-                <div class="col-2">
-                    <div class="profile-fav-title">Harga</div>
-                </div>
-                <div class="col-2">
-                    <div class="profile-fav-title">Info</div>
-                </div>
-                <div class="col-2">
-                    <div class="profile-fav-title">Action</div>
-                </div>
+<form id="frmdaftarproduct" action="" method="post" enctype="multipart/form-data">
+    <div class="container-fluid section content">
+        <div class="row">
+            <div class="col-2" >
+                <?php
+                require __DIR__.'/../user/left-menu.php';
+                ?>
             </div>
-
-<?
-        foreach ($data_product as $key => $value) {
-
-            $name = 'Publish';
-            $fa_icon = 'fa-eye';
-            if($value['_status'] == 'publish')
-            {
-                $name = 'Unpublish';
-                $fa_icon = 'fa-eye-slash';
-            }
-?>
-            <div class="row" style="border-left:1px solid #e2e7e9;border-bottom:1px solid #e2e7e9;border-right:1px solid #e2e7e9;padding:10px 15px;">
-                <div class="col-6">
-                    <div class="row">
-                        <div class="col-2">
-                            <img class="img-fluid" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>product/<?= $value['_picture'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  />
-                        </div>
-                        <div class="col-10">
-                            <?php echo $value['_name'];?>
-                        </div>
+            <div class="col-10">
+                <div class="row" style="border:1px solid #e2e7e9;padding:10px 15px;background-color: #ededed;">
+                    <div class="col-6">
+                        <div class="profile-fav-title">Produk</div>
+                    </div>
+                    <div class="col-2">
+                        <div class="profile-fav-title">Harga</div>
+                    </div>
+                    <div class="col-2">
+                        <div class="profile-fav-title">Info</div>
+                    </div>
+                    <div class="col-2">
+                        <div class="profile-fav-title">Action</div>
                     </div>
                 </div>
-                <div class="col-2">
-                    Rp. <?php echo number_format($value['_price']);?>
-                </div>
-                <div class="col-2">
-                    Kategori : <?php echo $value['_category_detail'];?>
-                    <br/>
-                    Status : <?php echo $value['_status'];?>
-                    <br/>
-                    <a href="<?= URL ?>merchantproduct/publishunpublish"><i class="fa <?php echo $fa_icon;?>"></i> <?php echo $name;?></a>
-                </div>
-                <div class="col-2">
-                    <a href="<?= URL ?>merchantproduct/editproduct"><i class="fa fa-edit"></i> Ubah</a>
-                    <br/>
-                    <a href="<?= URL ?>merchantproduct/duplicateproduct"><i class="fa fa-share"></i> Duplicate</a>
-                </div>
-            </div>
+
 <?
-        }
+            foreach ($data_product as $key => $value) {
+
+                $name = 'Publish';
+                $fa_icon = 'fa-eye';
+                if($value['_status'] == 'publish')
+                {
+                    $name = 'Unpublish';
+                    $fa_icon = 'fa-eye-slash';
+                }
 ?>
+                <div class="row" style="border-left:1px solid #e2e7e9;border-bottom:1px solid #e2e7e9;border-right:1px solid #e2e7e9;padding:10px 15px;">
+                    <div class="col-6">
+                        <div class="row">
+                            <div class="col-2">
+                                <img class="img-fluid" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>product/<?= $value['_picture'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"  />
+                            </div>
+                            <div class="col-10">
+                                <?php echo $value['_name'];?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        Rp. <?php echo number_format($value['_price']);?>
+                    </div>
+                    <div class="col-2">
+                        Kategori : <?php echo $value['_category_detail'];?>
+                        <br/>
+                        Status : <?php echo $value['_status'];?>
+                        <br/>
+                        <a href="javascript:sendPU('<?php echo $value['_code']?>');"><i class="fa <?php echo $fa_icon;?>"></i> <?php echo $name;?></a>
+                    </div>
+                    <div class="col-2">
+                        <a href="<?= URL ?>merchantproduct/editproduct"><i class="fa fa-edit"></i> Ubah</a>
+                        <br/>
+                        <a href="<?= URL ?>merchantproduct/duplicateproduct"><i class="fa fa-share"></i> Duplicate</a>
+                    </div>
+                </div>
+<?
+            }
+?>
+                <input type="hidden" name="theid" id="theid" />
+            </div>
         </div>
     </div>
-</div>
+</form>

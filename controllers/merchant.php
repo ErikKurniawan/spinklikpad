@@ -53,7 +53,6 @@ class merchant extends controller {
 
         $nama_toko = isset($_POST['name_toko']) ? $_POST['name_toko'] : '';
         $no_hp = isset($_POST['no_hp']) ? $_POST['no_hp'] : '';
-        $level_toko = isset($_POST['level_toko']) ? $_POST['level_toko'] : '';
 
         $_code = date("Ymdhisa");
 
@@ -97,8 +96,7 @@ class merchant extends controller {
                 '_nohp' => $no_hp,
                 '_image' => $picture_supplier.'.jpg',
                 '_image_banner' => $picture_banner.'.jpg',
-                '_createdate' => date("Y-m-d h:i:sa"),
-                '_level' => $level_toko
+                '_createdate' => date("Y-m-d h:i:sa")
             );
 
             $this->db->_insert($head_table, $head_data);
@@ -111,8 +109,7 @@ class merchant extends controller {
                 '_name' => $nama_toko,
                 '_nohp' => $no_hp,
                 '_image' => $picture_supplier.'.jpg',
-                '_image_banner' => $picture_banner.'.jpg',
-                '_level' => $level_toko
+                '_image_banner' => $picture_banner.'.jpg'
             );
 
             $update_cond = array(
