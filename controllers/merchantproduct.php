@@ -258,6 +258,50 @@ class merchantproduct extends controller {
         glfn::_redirect('merchantproduct');
     }
 
+    function publishunpublish() {
+        glfn::_checklogin();
+
+        glfn::_pre($_POST);
+
+
+        $theid = isset($_POST['theid']) ? $_POST['theid'] : '';
+
+        $data_product = $this->db->_select('select * from ms_product where _code = :code',array('code' => $theid));
+        if ($this->db->_rr == 0) {
+
+            $return['sts'] = 2;
+            $return['msg'] = 'Gagal Update Publish/Unpublish';
+            $return['token'] = '';
+
+        }else{
+
+            $_status = 'publish';
+            if($data_product[0]['_status'] == 'publish')
+            {
+                $_status = 'unpublish';
+            }
+
+            $table = 'ms_product';
+
+            $update_data = array(
+                '_status' => $_status
+            );
+
+            $update_cond = array(
+                '_code' => $theid
+            );
+
+            $this->db->_update($table, $update_data, $update_cond);
+
+            $return['sts'] = 1;
+            $return['msg'] = 'Berhasil Update Publish/Unpublish';
+            $return['token'] = '';
+        }
+
+        echo json_encode($return);
+        glfn::_redirect('merchantproduct/daftarproduct');
+    }
+
     function funcCreateID($thenumber){
          $ascTable = "qwertyuiopasdfghjklzxcvbnm1234567890POIUYTREWQLKJHGFDSAMNBVCXZ";
          $thebase = strlen($ascTable);
