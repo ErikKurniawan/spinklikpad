@@ -351,12 +351,10 @@ $listproduct = $this->product;
             foreach ($listproduct as $k => $v) {
                 $total++;
                 $_date = str_replace('-', '/', $v['_createdate']);
-                $_discount = $v['_discount'];
-                $_supplier = $v['_supplier'];
+                $_distributor = $v['_distributor'];
                 $_picture = $v['_picture'];
                 $_name_product = $v['_name'];
                 $_code = $v['_code'];
-                $_price = $v['_price'];
                 $_weight = $v['_weight'];
                 //$_name_supplier = $v['_name_supplier'];
                 //$_link = $v['_link'];
@@ -365,18 +363,6 @@ $listproduct = $this->product;
                 $_province = $v['_province'];
                 $_rating = 0 == "" || 0 == "0" ? '' : 0;
                 $ratestar = 0 == "" || 0 == "0" ? '' : 'class="rateyo" data-rateyo-rating="' . 0 . '"';
-
-                //$_link_thumb = $v['_link_thumb'];
-                $_discount_price = $v['_price'] - ($v['_price'] * $_discount / 100);
-
-
-                $icon_discount = '';
-                $show_price = '';
-
-                if ($_discount > 0) {
-                    $icon_discount = '<div class="discount-icon">' . $_discount . '%<br>Sale</div>';
-                    $show_price = '<span>Rp. ' . glfn::_currency($_price) . '</span>&nbsp;';
-                }
 
                 $icon_newitem = date('Ymdhis') < date('Ymdhis', strtotime($_date . "+7 days")) ? '<div class="new-arrival-icon">new</div>' : '';
 
@@ -391,15 +377,10 @@ $listproduct = $this->product;
                             <a href="<?= URL ?>product/detail/<?= $_code ?>">
 
                                 <div class="product-image">
-                                    <img class="img-fluid" src="<?= PATH_IMAGE ?>product/<?php echo $_picture;?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png';"  title="kategory 1"/>
+                                    <img class="img-fluid" src="<?= PATH_IMAGE_DISTRIBUTOR ?><?php echo $_picture;?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png';"  title="kategory 1"/>
                                 </div>
                                 <div class="product-title"><?= $v['_name'] ?></div>
-                                <div class="product-sale-price"><?php
-                                    if ($_discount > 0) {
-                                        echo "Rp " . glfn::_currency($_price);
-                                    }
-                                    ?></div>
-                                <div class="product-price">Rp <?= glfn::_currency($_discount_price) ?></div>
+                                <div class="product-price"></div>
                             </a>
                             <div class="product-icon">
 

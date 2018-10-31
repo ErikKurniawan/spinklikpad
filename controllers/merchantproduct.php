@@ -20,7 +20,8 @@ class merchantproduct extends controller {
         //glfn::_pre($count_supplier);
         $this->view->province = $data_province;
         $this->view->kategori = $data_kategori;
-        $this->view->render('merchantproduct/index');
+        $this->view->render('merchantproduct/tambahproduct');
+        //$this->view->render('merchantproduct/index');
     }
 
     function daftarproduct() {

@@ -13,7 +13,7 @@ class distributor extends controller {
         $this->view->css = glfn::_css();
         $this->view->js = glfn::_js();
 
-        $data_product = $this->db->_select('SELECT * FROM ms_product WHERE _level = :level',array('level' => '0'));
+        $data_product = $this->db->_select('SELECT * FROM ms_product_distributor',array());
         //glfn::_pre($count_supplier);
         $this->view->product = $data_product;
         $this->view->render('distributor/index');
