@@ -1,8 +1,5 @@
 <?php
-    $supplier = $this->supplier;
-
-    $nama_toko = isset($supplier[0]['_name']) ? $supplier[0]['_name'] : '';
-    $no_hp = isset($supplier[0]['_nohp']) ? $supplier[0]['_nohp'] : '';
+$supplier = $this->supplier;
 ?>
 
 <style>
@@ -139,10 +136,10 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    if(type_image == 0)
+                    if (type_image == 0)
                     {
                         $('#blah').attr('src', e.target.result);
-                    }else{
+                    } else {
                         $('#blah_banner').attr('src', e.target.result);
                     }
                 }
@@ -189,7 +186,7 @@
 
 
             <?php
-            require __DIR__.'/../user/left-menu.php';
+            require __DIR__ . '/../user/left-menu.php';
             ?>
         </div>
 
@@ -271,6 +268,18 @@
 
                 </script>
 
+                <?php
+                $name = "";
+                $hp = "";
+                $image = "";
+                $imagebaner = "";
+                foreach ($supplier as $key => $value) {
+                    $name = $value['_name'];
+                    $hp = $value['_nohp'];
+                    $image = $value['_image'];
+                    $imagebaner = $value['_image_banner'];
+                }
+                ?>
 
                 <form id="frminfotoko" action="<?= URL ?>merchant/simpandata" method="post" enctype="multipart/form-data">
 
@@ -290,7 +299,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="name_toko" placeholder="Nama Toko"  name="name_toko" value="<?= $nama_toko ?>">
+                            <input type="text" class="form-control cst-input" id="name_toko" placeholder="Nama Toko"  name="name_toko" value="<?= $name ?>">
                         </div>
                     </div>
 
@@ -300,7 +309,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="no_hp" placeholder="No Handphone"  name="no_hp" value="<?= $no_hp ?>">
+                            <input type="text" class="form-control cst-input" id="no_hp" placeholder="No Handphone"  name="no_hp" value="<?= $hp ?>">
                         </div>
                     </div>
 
@@ -317,7 +326,7 @@
                         <div class="col-3 span-field" style="">
                             <div class="form-group" style="border:1px solid #d2d2d2;padding:10px;background: #f7f7f7;display: table;width: 100%;">
                                 <div>
-                                    <img class="img-fluid" id="blah" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>merchant/<?= $supplier[0]['_image'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>customer/def-customer.jpg?a=<?= time() ?>';"  />
+                                    <img class="img-fluid" id="blah" style="margin-left: auto;margin-right: auto;display: block;" src="<?= PATH_IMAGE ?>merchant/<?= $image ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>customer/def-customer.jpg?a=<?= time() ?>';"  />
                                 </div>
                                 <div>
                                     <label for="fileInput" class="custom-file-upload">
@@ -345,7 +354,7 @@
                         <div class="col-12 span-field" style="">
                             <div class="form-group" style="border:1px solid #d2d2d2;padding:10px;background: #f7f7f7;display: table;width: 100%;">
                                 <div>
-                                    <img class="img-fluid" id="blah_banner" style="margin-left: auto;margin-right: auto;display: block; height: 150px;" src="<?= PATH_IMAGE ?>merchant/<?= $supplier[0]['_image_banner'] ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>customer/def-customer.jpg?a=<?= time() ?>';"  />
+                                    <img class="img-fluid" id="blah_banner" style="margin-left: auto;margin-right: auto;display: block; height: 150px;" src="<?= PATH_IMAGE ?>merchant/<?= $imagebaner ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>customer/def-customer.jpg?a=<?= time() ?>';"  />
                                 </div>
                                 <div>
                                     <label for="fileBanner" class="custom-file-upload">

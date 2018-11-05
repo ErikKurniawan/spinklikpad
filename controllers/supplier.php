@@ -17,6 +17,8 @@ class supplier extends controller {
 
         $supplier = glfn::_curl_api2('supplier/detail', array('_code' => $_code));
         $supplier = $this->view->supplier = isset($supplier['data']) && count($supplier['data']) > 0 ? $supplier['data'] : array();
+        
+        //glfn::_pre($supplier);
 
 
 

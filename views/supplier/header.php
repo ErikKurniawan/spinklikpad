@@ -1,6 +1,6 @@
 
 <?php
-$_datatoko = glfn::_datatoko();
+$_datatoko = $this->supplier;
 
 
 
@@ -15,6 +15,7 @@ $_district = "";
 $_subdistrict = "";
 $_image = "";
 $_image_banner = "";
+
 foreach ($_datatoko as $k => $v) {
     $_email = $v['_email'];
     $_name = $v['_name'];
