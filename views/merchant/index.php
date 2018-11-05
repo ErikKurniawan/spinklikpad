@@ -1,5 +1,8 @@
 <?php
     $supplier = $this->supplier;
+
+    $nama_toko = isset($supplier[0]['_name']) ? $supplier[0]['_name'] : '';
+    $no_hp = isset($supplier[0]['_nohp']) ? $supplier[0]['_nohp'] : '';
 ?>
 
 <style>
@@ -287,7 +290,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="name_toko" placeholder="Nama Toko"  name="name_toko" value="<?= $supplier[0]['_name'] ?>">
+                            <input type="text" class="form-control cst-input" id="name_toko" placeholder="Nama Toko"  name="name_toko" value="<?= $nama_toko ?>">
                         </div>
                     </div>
 
@@ -297,7 +300,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="no_hp" placeholder="No Handphone"  name="no_hp" value="<?= $supplier[0]['_nohp'] ?>">
+                            <input type="text" class="form-control cst-input" id="no_hp" placeholder="No Handphone"  name="no_hp" value="<?= $no_hp ?>">
                         </div>
                     </div>
 
