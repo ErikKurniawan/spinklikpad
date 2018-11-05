@@ -837,7 +837,7 @@
                                 </a>
                             </div>
                             <div style="border:0px solid black;text-align: center;width: 60px;line-height: 60px;">
-                                <a class="menu-icon" style="border:0px solid black;text-align: center;" href = "<?= URL ?>" >
+                                <a class="menu-icon" style="border:0px solid black;text-align: center;" href = "<?= URL ?>merchant" >
                                     <i class="fas fa-store-alt" style=""></i>
                                 </a>
                             </div>
