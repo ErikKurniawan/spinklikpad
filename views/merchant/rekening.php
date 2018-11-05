@@ -1,6 +1,10 @@
 <?php
     $data_bank = $this->bank;
     $supplier = $this->supplier;
+
+    $nama_akun = isset($supplier[0]['_bank_account_name']) ? $supplier[0]['_bank_account_name'] : '';
+    $no_rek = isset($supplier[0]['_bank_account']) ? $supplier[0]['_bank_account'] : '';
+    $cabang = isset($supplier[0]['_bank_branch']) ? $supplier[0]['_bank_branch'] : '';
 ?>
 
 <style>
@@ -239,7 +243,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="nama_akun" placeholder="Nama Akun"  name="nama_akun" value="<?= $supplier[0]['_bank_account_name'] ?>">
+                            <input type="text" class="form-control cst-input" id="nama_akun" placeholder="Nama Akun"  name="nama_akun" value="<?= $nama_akun ?>">
                         </div>
                     </div>
 
@@ -249,7 +253,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="no_rek" placeholder="Nomor Rekening"  name="no_rek" value="<?= $supplier[0]['_bank_account'] ?>">
+                            <input type="text" class="form-control cst-input" id="no_rek" placeholder="Nomor Rekening"  name="no_rek" value="<?= $no_rek ?>">
                         </div>
                     </div>
 
@@ -281,7 +285,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="cabang" placeholder="Cabang"  name="cabang" value="<?= $supplier[0]['_bank_branch'] ?>">
+                            <input type="text" class="form-control cst-input" id="cabang" placeholder="Cabang"  name="cabang" value="<?= $cabang ?>">
                         </div>
                     </div>
 

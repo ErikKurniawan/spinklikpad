@@ -396,7 +396,7 @@
                             <select name="level_pemasaran" id="level_pemasaran" class="form-control" onchange="getLevel(this.value)">
                                 <option value="">-- Pilih Level Pemasaran --</option>
                                 <option value="Publik">Publik</option>
-                                <option value="BOS">BOS</option>
+                                <option value="BOS">BOS (Bantuan Operasional Sekolah)</option>
                                 <option value="All">All Level</option>
                             </select>
                         </div>
