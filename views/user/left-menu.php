@@ -180,7 +180,7 @@
                 <div id="item-3" class="collapse show">
                     <ul class="nav flex-column ml-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Ulasan</a>
+                            <a class="nav-link" href="<?= URL ?>user/review">Ulasan</a>
                         </li>
                         <!--
                         <li class="nav-item">

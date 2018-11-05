@@ -302,7 +302,7 @@ $data = $this->data;
                             onSet: function (rating, rateYoInstance) {
                                 namerating = ""
                                 key = $(this).attr('data');
-                                alert(key);
+                                //alert(key);
 
                                 if (rating == 1)
                                 {
@@ -331,6 +331,7 @@ $data = $this->data;
 
 
                 <?php
+                            
                 foreach ($data as $key => $value) {
                     ?>
                     <div class="row" style="margin-bottom: 10px">
@@ -361,7 +362,8 @@ $data = $this->data;
                                     </div>
                                     <div class="col-6">
                                         <form class="formsubmit" id="frmprofileedit<?=$key?>" action="<?= URL ?>user/reviewdo" method="post" enctype="multipart/form-data">
-                                           <input type="hidden" name="code" value="<?=$value['_product']?>" />
+                                           <input type="hidden" name="product" value="<?=$value['_product']?>" />
+                                           <input type="hidden" name="cdt" value="<?=$value['_code_detail_transaction']?>" />
                                             <div class="rateY2o" style="border:0px solid red;">
                                                 <div id="rateyoid" data="<?=$key?>"  class="rateYo" style="border:0px solid indigo;float:left;">
                                                 </div>

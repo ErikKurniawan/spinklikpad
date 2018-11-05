@@ -593,15 +593,38 @@ class user extends controller {
         $update = glfn::_curl_api2('address/update', $post);
         echo json_encode($update);
     }
-
-    function review() {
-        $query = "select _invoice,d._name as _product_name, e._name as _supplier_name,_product,_rating,_rating_desc,_rating_date from tr_transaction_delivery_detail a
+    
+     function reviewlist() {
+        glfn::_checklogin();
+        $query = "select b._code_detail_transaction,_invoice,d._name as _product_name, e._name as _supplier_name,_product,_rating,_rating_desc,_rating_date from tr_transaction_delivery_detail a
                 join tr_transaction_delivery b on b._code_detail_transaction = a._code_detail_transaction
                 join tr_transaction c on b._transaction = c._code
                 join ms_product d on a._product= d._code
                 join ms_supplier e on e._code = b._supplier
                 where _customer=:_customer
-                and _rating<>0
+                and _rating>0
+                and _sts_delivery='6'
+            ";
+
+        $this->view->data = $this->db->_select($query, array('_customer' => $_COOKIE[COOKIE_USER]));
+
+
+        $this->view->css = glfn::_css();
+        $this->view->js = glfn::_js();
+        $this->view->render('user/reviewlist');
+    }
+    
+
+    function review() {
+        glfn::_checklogin();
+        $query = "select b._code_detail_transaction,_invoice,d._name as _product_name, e._name as _supplier_name,_product,_rating,_rating_desc,_rating_date from tr_transaction_delivery_detail a
+                join tr_transaction_delivery b on b._code_detail_transaction = a._code_detail_transaction
+                join tr_transaction c on b._transaction = c._code
+                join ms_product d on a._product= d._code
+                join ms_supplier e on e._code = b._supplier
+                where _customer=:_customer
+                and _rating=0
+                and _sts_delivery='6'
             ";
 
         $this->view->data = $this->db->_select($query, array('_customer' => $_COOKIE[COOKIE_USER]));
@@ -610,6 +633,40 @@ class user extends controller {
         $this->view->css = glfn::_css();
         $this->view->js = glfn::_js();
         $this->view->render('user/review');
+    }
+    
+     function reviewdo() {
+        glfn::_checklogin();
+        glfn::_pre($_POST);
+        
+        $product = isset($_POST['product']) ? $_POST['product'] : '';
+        $_ctd = isset($_POST['cdt']) ? $_POST['cdt'] : '';
+        $valuerateyo = isset($_POST['valuerateyo']) ? $_POST['valuerateyo'] : '';
+        $ratingdesc     = isset($_POST['ratingdesc']) ? $_POST['ratingdesc'] : '';
+        echo  date("Y-m-d H:i:s");
+        $this->db->_select("select * from tr_transaction_delivery where _code_detail_transaction = :code and _sts_delivery='6'", array('code' => $_ctd));
+        if ($this->db->_rr > 0) {
+
+            $table = 'tr_transaction_delivery_detail';
+
+            $update_data = array(
+                   '_rating_desc' => $ratingdesc,
+                '_rating_date'=> date("Y-m-d H:i:s"),
+                '_rating'=>$valuerateyo
+            );
+
+            $update_cond = array(
+                '_product'=>$product,
+                '_code_detail_transaction'=>$_ctd
+            );
+
+            $this->db->_update($table, $update_data, $update_cond);
+
+            $return['sts'] = 1;
+            $return['msg'] = 'Berhasil Update Pengiriman';
+            $return['token'] = '';
+        }
+        glfn::_redirect('user/review');
     }
 
 }

@@ -197,9 +197,7 @@
                     <div style="width: 250px;text-align: right;">Total Bayar</div>
 
                     <div style="width: 200px; text-align: right;">Tujuan Pembayaran</div>
-                    <div style="text-align: right;width: 150px; ">
-                        Pembatalan Pesanan
-                    </div>
+            
                     <div style="text-align: right;width: 100px; ">
 
                     </div>
@@ -232,11 +230,7 @@
                                         <div style="width: 250px;text-align: right;">Rp. <?= number_format($gross_amount) ?></div>
 
                                         <div style="width: 200px; text-align: right;"><?= $bank ?></div>
-                                        <div style="text-align: right;width: 150px; ">
-                                            <a href="#" class="pruchase-cancel" code="<?= $_code ?>">
-                                                <i class="fas fa-times"></i> Batalkan Pesanan
-                                            </a>
-                                        </div>
+                                 
                                         <div style="text-align: right;width: 100px; ">
                                             <a class="detial-purchase" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$_code?>" >
                                                 <i class="fas fa-list-ul"></i> Rincian
@@ -245,23 +239,18 @@
                                     </div>
 
                                 </div>
+                                
                                 <div id="collapse<?=$_code?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                     <div class="panel-body">
-                                        <div class="row" style="width: 100%;">
-
-                                            <?php
+                                              <?php
                                             foreach ($details as $k2 => $v2) {
                                                 ?>
-                                                <div class="col-3" style="padding :15px 20px;" >
-                                                    <a href="<?= URL ?>/invoice?a=<?= $v2['_invoice'] ?>"><?= $v2['_invoice'] ?></a>
+                                        <div style="display: block;padding:5px 10px;">
+                                                    <a class="link-invoice" href="<?= URL ?>/invoice?a=<?= $v2['_invoice'] ?>"><?= $v2['_invoice'] ?></a>
                                                 </div>
                                                 <?php
                                             }
                                             ?>
-
-
-
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +258,18 @@
                         }
                         ?>
 
-
+                        <style>
+                            .link-invoice
+                            {
+                                padding:5px 10px;
+                                color:black;
+                            }
+                            .link-invoice:hover
+                            {
+                                color:white;
+                                background: #733f98;
+                            }
+                        </style>
                     </div>
                 </div>
 

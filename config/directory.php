@@ -15,7 +15,7 @@ define('VIEWS', 'views/');
 /* -------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
-$serverip = $_SERVER['SERVER_ADDR'] == "::1" ? 'localhost:3128' : "klikpad.com";
+$serverip = $_SERVER['SERVER_ADDR'] == "::1" ? 'localhost' : "klikpad.com";
 $http = $_SERVER['SERVER_ADDR'] == "::1" ? "http" : "https";
 define('DOMAIN', $serverip);
 define('NAMAWEB', 'klikpad');
