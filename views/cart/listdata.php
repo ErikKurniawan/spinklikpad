@@ -182,6 +182,7 @@ $cart = $this->cartlist;
                             $_desc = $v3['_desc'];
                             $_name_product = $v3['_name_product'];
                             $_link = $v3['_link'];
+                            $_picture = $v3['_picture'];
                             $_link_thumb = $v3['_link_thumb'];
                             $hargabarang = $_qty * $_price;
                             $totalbarang += $_qty;
@@ -196,7 +197,8 @@ $cart = $this->cartlist;
                             ?>
                             <div class="asd" style="border-top:1px dashed #d2d2d2; padding: 10px 0px 15px 0px;margin-bottom: 10px;color:#95999A">
                                 <div style="width:10%;">
-                                    <img style="border:2px solid #d2d2d2; width: 64px;height: 64px;"class="center" src="<?= $_link_thumb ?>" title="kategory 1">
+
+                                    <img style="border:2px solid #d2d2d2;width: 64px;height: 64px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
                                 </div>
                                 <div style="width: 90%;padding:0px 10px;border:0px solid black;color:#6a6c6c;">
                                     <div class="row">

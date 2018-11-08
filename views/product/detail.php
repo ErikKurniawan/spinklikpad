@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php ?>
 <style>
     .panel-filter
     {
@@ -275,7 +273,7 @@ foreach ($product as $k => $v) {
                                     ?>
                                     <a data-toggle="pill"  href="#p<?= $tmpseq ?>">
                                         <img style="border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
-                                        
+
                                     </a>
                                     <?php
                                 }
@@ -287,7 +285,7 @@ foreach ($product as $k => $v) {
                                                     <a data-toggle="pill" href="#p4"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p4.jpg" title="image 4"/></a>
                                                     <a data-toggle="pill" href="#p5"><img class="img-fluid"  src="<?= PATH_IMAGE ?>p5.jpg" title="image 5"/></a>
                             -->
-
+                        </a>
                     </div>
                 </div>
                 <div class="col-5" >
@@ -322,7 +320,7 @@ foreach ($product as $k => $v) {
 
                                 <div class="tab-pane fade " id="p<?= $tmpseq ?>" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                     <img style="width: 100%;height: 100%;border:2px solid #d2d2d2;border-radius:5px;;margin-bottom: 5px;" class="img-fluid" src="<?= PATH_IMAGE ?>product/<?= $_picture ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';" />
-                                    
+
                                 </div>
                                 <?php
                             }
@@ -422,16 +420,37 @@ foreach ($product as $k => $v) {
                     </style>
 
 
+
+
+                    <?php
+                    
+                    $datatoko = glfn::_datatoko();
+                    $_usercodesupplier = 0;
+                    foreach ($datatoko as $key => $value) {
+                        $_usercodesupplier = $value['_code'];
+                    }
+                    
+                    
+
+//glfn::_pre($datatoko);
+                    ?>
+
                     <div class="parent2" style="text-align: center;margin-top: 20px;">
-                        <div style="text-align: left;">
-                            <a href="#" data="<?= $_code ?>" class="btn btn-wishlist " ><i class="fas fa-heart"></i> 0 </a>
-                        </div>
+                        <?php
+                        if ($_supplier != $_usercodesupplier) {
+                            ?>
+                            <div style="text-align: left;">
+                                <a href="#" data="<?= $_code ?>" class="btn btn-wishlist " ><i class="fas fa-heart"></i> 0 </a>
+                            </div>
 
-                        <div style="text-align: right;">
-                            <a href="#" data="<?= $_code ?>" class="btn btn-cart btn-showmodal" >Tambahkan Ke keranjang</a>
-                        </div>
-
+                            <div style="text-align: right;">
+                                <a href="#" data="<?= $_code ?>" class="btn btn-cart btn-showmodal" >Tambahkan Ke keranjang</a>
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
+
 
                 </div>
             </div>
@@ -502,7 +521,7 @@ foreach ($product as $k => $v) {
 
                                 </style>
                                 <?php
-                                //glfn::_pre($product_ulasan);
+//glfn::_pre($product_ulasan);
                                 foreach ($product_ulasan as $k => $v) {
                                     $picture_customer = md5($v['_customer']);
                                     ?>
@@ -559,7 +578,7 @@ foreach ($product as $k => $v) {
         $_subprovince = "";
         $_district = "";
         $_subdistrict = "";
-        $_image="";
+        $_image = "";
         foreach ($supplier as $k => $v) {
             $_email = $v['_email'];
             $_name = $v['_name'];
@@ -580,8 +599,8 @@ foreach ($product as $k => $v) {
 
 
         $supplierulasan = $this->supplierulasan;
-        
-        
+
+
         $avgsupplierulasan = 0;
         foreach ($supplierulasan as $k => $v) {
 
@@ -598,8 +617,8 @@ foreach ($product as $k => $v) {
                 </div>
                 <div class="panel-supplier">
                     <div class="supplier-image">
-                        
-                        <img class="img-fluid" src="<?= PATH_IMAGE ?>merchant/<?=$_image?>?a=<?=time()?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"/>
+
+                        <img class="img-fluid" src="<?= PATH_IMAGE ?>merchant/<?= $_image ?>?a=<?= time() ?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png?a=<?= time() ?>';"/>
                     </div>
                     <div class="supplier-title"><?= $_name ?></div>
                     <div class="supplier-address"><?= $_province ?></div>
