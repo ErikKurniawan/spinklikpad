@@ -6,6 +6,8 @@
     $subprovince = isset($supplier[0]['_subprovince']) ? $supplier[0]['_subprovince'] : '';
     $district = isset($supplier[0]['_district']) ? $supplier[0]['_district'] : '';
     $subdistrict = isset($supplier[0]['_subdistrict']) ? $supplier[0]['_subdistrict'] : '';
+
+    $address = isset($supplier[0]['_address']) ? $supplier[0]['_address'] : '';
 ?>
 
 <style>
@@ -308,7 +310,7 @@
                         </div>
 
                         <div class="col-9 form-group">
-                            <input type="text" class="form-control cst-input" id="alamat" placeholder="Alamat"  name="alamat" value="<?= $supplier[0]['_address'] ?>">
+                            <input type="text" class="form-control cst-input" id="alamat" placeholder="Alamat"  name="alamat" value="<?= $address ?>">
                         </div>
                     </div>
 

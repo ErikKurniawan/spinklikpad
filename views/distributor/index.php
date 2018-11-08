@@ -126,15 +126,6 @@ $listproduct = $this->product;
         padding: 0px 15px !important;
     }
 
-
-
-
-
-
-
-
-
-
     .col-xs-5ths,
     .col-sm-5ths,
     .col-md-5ths,
