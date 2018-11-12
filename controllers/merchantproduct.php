@@ -38,6 +38,37 @@ class merchantproduct extends controller {
         $this->view->render('merchantproduct/daftarproduct');
     }
 
+    function detail($code = 0) {
+        $this->view->css = glfn::_css();
+        $this->view->js = glfn::_js();
+
+
+        if (!$code) {
+            glfn::_redirect('error');
+            exit();
+        }
+
+        $post['_user'] = isset($_COOKIE[COOKIE_USER]) ? $_COOKIE[COOKIE_USER] : '';
+        $post['_password'] = isset($_COOKIE[COOKIE_PWD]) ? $_COOKIE[COOKIE_PWD] : '';
+        $post['_code'] = $code;
+
+        $data_supplier = $this->db->_select('select * from ms_supplier where _email = :email',array('email' => $_COOKIE[COOKIE_USER]));
+
+        $data_product = $this->db->_select('select b._name as _name_distributor, a._createdate as _createdate, b._code as _distributor, a._picture as _picture, a._name as _name, a._code as _code, a._weight as _weight, a._content as _content, a._spesifikasi as _spesifikasi, a._min_order as _min_order from ms_product_distributor a join ms_distributor b on a._distributor = b._code where a._code = :code',array('code' => $post['_code']));
+
+        $data_photos = $this->db->_select('select * from ms_product_distributor_photo where _code = :code',array('code' => $post['_code']));
+
+        $data_distributor = $this->db->_select('select * from ms_distributor where _code = :code',array('code' => $data_product[0]['_distributor']));
+
+        $data_transaction = $this->db->_select('select * from tr_transaction_distributor where _distributor = :distributor and _supplier = :supplier order by _crdt DESC limit 1',array('distributor' => $data_product[0]['_distributor'], 'supplier' => $data_supplier[0]['_code']));
+
+        $this->view->proddtl = $data_product;
+        $this->view->photos = $data_photos;
+        $this->view->distributor = $data_distributor;
+        $this->view->trans1 = $data_transaction;
+        $this->view->render('merchantproduct/detail');
+    }
+
     function simpanproduct() {
         glfn::_checklogin();
 

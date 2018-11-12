@@ -346,6 +346,7 @@ $listproduct = $this->product;
                 $_picture = $v['_picture'];
                 $_name_product = $v['_name'];
                 $_code = $v['_code'];
+                $_product_code = $v['_product_code'];
                 $_weight = $v['_weight'];
                 //$_name_supplier = $v['_name_supplier'];
                 //$_link = $v['_link'];
@@ -365,7 +366,7 @@ $listproduct = $this->product;
                     <?php } ?>
                     <div class="col-md-5ths">
                         <div class="product-card">
-                            <a href="<?= URL ?>product/detail/<?= $_code ?>">
+                            <a href="<?= URL ?>merchantproduct/detail/<?= $_product_code ?>">
 
                                 <div class="product-image">
                                     <img class="img-fluid" src="<?= PATH_IMAGE_DISTRIBUTOR ?><?php echo $_picture;?>" onerror="this.src='<?= PATH_IMAGE ?>logo.png';"  title="kategory 1"/>

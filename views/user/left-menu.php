@@ -163,6 +163,9 @@
                                 <a class="nav-link" href="<?= URL ?>distributor">Penawaran Distributor</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="<?= URL ?>pembelian">Pembelian</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?= URL ?>merchant">Pengaturan Toko</a>
                             </li>
                         </ul>
