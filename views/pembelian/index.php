@@ -211,16 +211,16 @@ $purchasestatus = $this->purchasestatus;
                 <ul style="border-bottom:1px solid #e2e7e9;" class="nav nav-pills mb-3 i-tab" id="pills-tab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link " id="pills-home-tab" href="<?= URL ?>pembelian/order">Baru Order</a>
-                    </li>
+                    </li><!--
                     <li class="nav-item">
                         <a class="nav-link " id="pills-profile-tab" href="<?= URL ?>pembelian/pembayaran">Status Pembayaran</a>
-                    </li>
+                    </li>-->
                     <li class="nav-item">
                         <a class="nav-link active" id="pills-contact-tab" href="<?= URL ?>pembelian" >Daftar Transaksi</a>
-                    </li>
+                    </li><!--
                     <li class="nav-item">
                         <a class="nav-link " id="pills-contact-tab" href="<?= URL ?>penjualan/retur" >Terima Barang Retur</a>
-                    </li>
+                    </li>-->
                 </ul>
 
 

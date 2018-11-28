@@ -135,4 +135,75 @@ class pembelian extends controller {
         echo json_encode($return);
         glfn::_redirect('pembelian/order');
     }
+
+    function approve() {
+        glfn::_checklogin();
+        $user_email = isset($_COOKIE[COOKIE_USER]) ? $_COOKIE[COOKIE_USER] : '';
+
+        $return = array();
+
+        $varip = $_SERVER['REMOTE_ADDR'];
+        $varip = str_replace(".","",$varip);
+        $vartstamp = date("Ymdhis");
+        $_rand_1 = rand();
+        $_rand_2 = rand();
+        $varsurveyid = ($vartstamp + $varip) + ($_rand_1 + $_rand_2);
+        $productid=self::funcCreateID($varsurveyid);
+        
+        $_code_transaction = isset($_POST['thecode']) ? $_POST['thecode'] : '';
+        $_jumlah_barang = isset($_POST['qty'.$_code_transaction]) ? $_POST['qty'.$_code_transaction] : '';
+        $_keterangan = isset($_POST['desc'.$_code_transaction]) ? $_POST['desc'.$_code_transaction] : '';
+        $_alamat = isset($_POST['address'.$_code_transaction]) ? $_POST['address'.$_code_transaction] : '';
+
+        $_payment_code = "PYMDIS".date("Ymdhisa").$productid;
+
+        
+        $this->db->_select("select * from tr_transaction_distributor where _code = :code",array('code' => $_code_transaction));
+        if ($this->db->_rr > 0) {
+
+          $table = 'tr_transaction_distributor';
+
+            $update_data = array(
+                '_address' => $_alamat,
+                '_qty' => $_jumlah_barang,
+                '_desc' => $_keterangan,
+                '_sts' => 3,
+                '_payment_code' => $_payment_code
+            );
+
+            $update_cond = array(
+                '_code' => $_code_transaction
+            );
+
+            $this->db->_update($table, $update_data, $update_cond);
+
+            $return['sts'] = 1;
+            $return['msg'] = 'Berhasil Update Order';
+            $return['token'] = '';
+
+        }
+
+        echo json_encode($return);
+        glfn::_redirect('pembelian/order');
+    }
+
+    function funcCreateID($thenumber){
+         $ascTable = "qwertyuiopasdfghjklzxcvbnm1234567890POIUYTREWQLKJHGFDSAMNBVCXZ";
+         $thebase = strlen($ascTable);
+         $varreturn = "";
+         $varhitung = "";
+        
+        
+         while($thenumber >= $thebase) {
+              $tempmodulus = abs($thenumber % $thebase);
+              $varhitung = $ascTable[$tempmodulus] . $varhitung;
+            //echo $tempmodulus."<br/>";
+            //echo $thenumber."<br/>";
+              $thenumber = $thenumber/$thebase;
+         }
+         $thenumber = round($thenumber,0);
+         $thenumber = (string)$thenumber;
+         $varreturn = $ascTable[$thenumber] . $varhitung;
+         return $varreturn;
+    }
 }

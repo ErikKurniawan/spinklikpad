@@ -171,6 +171,13 @@ $listdataaddress = $this->listaddress;
         document.getElementById('frmcancelorder').submit();
     }
 
+    function approveOrder(thecode)
+    {
+        document.getElementById('thecode').value = thecode;
+        document.getElementById('frmcancelorder').action = '<?= URL ?>pembelian/approve';
+        document.getElementById('frmcancelorder').submit();
+    }
+
     $(document).ready(function () {
         $('body').on('click', '.btn-showmodal', function () {
             if (!$.cookie('signin'))
@@ -237,15 +244,16 @@ $listdataaddress = $this->listaddress;
                         <li class="nav-item">
                             <a class="nav-link active" id="pills-home-tab" href="<?= URL ?>pembelian/order">Baru Order</a>
                         </li>
+                        <!--
                         <li class="nav-item">
                             <a class="nav-link" id="pills-profile-tab" href="<?= URL ?>pembelian/pembayaran">Status Pembayaran</a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
                             <a class="nav-link " id="pills-contact-tab" href="<?= URL ?>pembelian" >Daftar Transaksi</a>
-                        </li>
+                        </li><!--
                         <li class="nav-item">
                             <a class="nav-link " id="pills-contact-tab" href="<?= URL ?>penjualan/retur" >Terima Barang Retur</a>
-                        </li>
+                        </li>-->
                     </ul>
 
 
@@ -266,7 +274,7 @@ $listdataaddress = $this->listaddress;
                             $transaction_time = $v2['transaction_time'];
                             $_name_distributor = $v2['_name_distributor'];
                             $_qty = $v2['_qty'];
-                            $_weight = $v2['_weight']/100;
+                            $_weight = $v2['_weight'];
                             $_price = $v2['_price'];
                             $_picture = $v2['_picture'];
                             $_name_product = $v2['_name_product'];
@@ -453,7 +461,7 @@ $listdataaddress = $this->listaddress;
                                                         <div class="row" >
                                                             <div class="col-sm-4" style="border:0px solid black;">
                                                                 <div class="label-cart">Jumlah Barang</div>
-                                                                <input number class="simplebox" style="width:100%;" type="text" id="qty" name="qty" value="<?= $_qty ?>">
+                                                                <input number class="simplebox" style="width:100%;" type="text" id="qty<?php echo $_code_transaction;?>" name="qty<?php echo $_code_transaction;?>" value="<?= $_qty ?>">
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 <div class="label-cart">Harga Barang</div>
@@ -468,7 +476,7 @@ $listdataaddress = $this->listaddress;
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="label-cart">Keterangan</div>
-                                                        <textarea class="simplebox" placeholder="Keterangan" name="desc" id="desc" cols="" rows="4"><?= $_desc ?></textarea>
+                                                        <textarea class="simplebox" placeholder="Keterangan" name="desc<?php echo $_code_transaction;?>" id="desc<?php echo $_code_transaction;?>" cols="" rows="4"><?= $_desc ?></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -480,7 +488,7 @@ $listdataaddress = $this->listaddress;
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-9">
-                                                        <textarea class="simplebox"  readonly id="address" name="address" rows="6" cols="1000">
+                                                        <textarea class="simplebox"  readonly id="address<?php echo $_code_transaction;?>" name="address<?php echo $_code_transaction;?>" rows="6" cols="1000">
 <?php
                                                             $no = 0;
                                                             foreach ($listdataaddress as $k => $v) {
@@ -594,11 +602,11 @@ $listdataaddress = $this->listaddress;
                                                                 </ul>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
                                             <div style=";padding-top:15px;">
+                                            <!--
                                                 <div class="row" style="">
                                                     <div class="col-sm-3 label-cart">
                                                         Kurir Pengiriman
@@ -609,7 +617,7 @@ $listdataaddress = $this->listaddress;
 
 
                                                     <div class="col-sm-2 label-cart">
-                                                        PPN ( <?= $ppn ?> % )
+                                                        PPN ( 10 % )
                                                     </div>
                                                     <div class="col-sm-2 label-cart">
                                                         Ongkos Kirim
@@ -659,7 +667,7 @@ $listdataaddress = $this->listaddress;
                                                     <div class="col-sm-6 label-cart">
                                                         <div id="price-courier" class="row">
                                                             <div class="col-sm-4">
-                                                                PPN ( <?= $ppn ?> % )
+                                                                PPN ( 10 % )
                                                             </div>
                                                             <div class="col-sm-4">
                                                                 Ongkos Kirim
@@ -671,7 +679,7 @@ $listdataaddress = $this->listaddress;
                                                     </div>
 
                                                 </div>
-
+-->
 
 
 
@@ -679,13 +687,7 @@ $listdataaddress = $this->listaddress;
                                             <input type="hidden" name="product" id="product" value="<?php echo $post['_product'] ?>"/>
                                             <input type="hidden" name="code_detail_transaction" id="code_detail_transaction" value="<?php echo $post['_code_detail_transaction'] ?>"/>
                                             <input type="hidden" name="flag" id="flag" value="upt"/>
-                                            <button  type='submit' class="float-right btn btn-to-cart" href="#"><?php
-                                                if (count($_detail) > 0) {
-                                                    echo 'Update Keranjang';
-                                                } else {
-                                                    echo 'Tambahkan Kekeranjang';
-                                                }
-                                                ?></button>
+                                            <button  type='submit' class="float-right btn btn-to-cart" onclick="javascript:approveOrder('<?php echo $_code_transaction;?>')">Setuju Order</button>
                                         </div>
 
                                     </div>
